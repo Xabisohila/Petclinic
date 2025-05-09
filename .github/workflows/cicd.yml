@@ -46,7 +46,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    needs: Security-checks:
+    needs: Security-checks
 
     steps:
     - uses: actions/checkout@v4
