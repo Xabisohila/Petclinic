@@ -44,7 +44,7 @@ jobs:
     - name: Gitleaks code scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
 
-  test:
+  unit-tests:
     runs-on: ubuntu-latest
     needs: Security-checks
 
