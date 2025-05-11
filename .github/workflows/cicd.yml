@@ -40,7 +40,7 @@ jobs:
       
       # checks sensitive data that is hard-coded in source code
     - name: Gitleaks Installation
-      run: sudo apt install gitleaks -y
+      run: sudo apt-get install gitleaks -y
     - name: Gitleaks code scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
 
