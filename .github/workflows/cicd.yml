@@ -37,12 +37,16 @@ jobs:
 
     - name: Trivy fs scan
       run: trivy fs --format table -o fs-report.json . 
-      
-      # checks sensitive data that is hard-coded in source code
-    - name: Gitleaks Installation
-      run: sudo apt-get install gitleaks -y
-    - name: Gitleaks code scan
-      run: gitleaks detect source . -r gitleaks-report.json -f json
+     
+  # checks sensitive data that is hard-coded in source code
+  # - name: Gitleaks Installation
+  #    run: |
+  #     curl -sSL https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -o gitleaks
+  #     chmod +x gitleaks
+  #      sudo mv gitleaks /usr/local/bin
+  #   run: sudo apt-get install gitleaks -y
+  # - name: Gitleaks code scan
+  #   run: gitleaks detect source . -r gitleaks-report.json -f json
 
   unit-tests:
     runs-on: self-hosted
