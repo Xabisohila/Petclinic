@@ -143,7 +143,7 @@ jobs:
 
   deploy_to_kubernetes:
     runs-on: self-hosted
-    needs: build-docker-image-and-push:
+    needs: build-docker-image-and-push
     steps:
     - name: Checkout Code
       uses: actions/checkout@v4
