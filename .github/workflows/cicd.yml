@@ -27,6 +27,7 @@ jobs:
     needs: compile
 
     steps:
+    # Comprehensive Vulnerability Scanner for Containers and Artifacts, Suitable for CI.
     - uses: actions/checkout@v4
     - name: Trivy installation
       run: |
@@ -86,7 +87,8 @@ jobs:
       with:
         name: app-jar
         path: target/*.jar
-
+        
+# checks for code smells, vulnarabilities and security inspection
   sonar-analysis:
     #runs-on: self-hosted
     runs-on: ubuntu-latest
