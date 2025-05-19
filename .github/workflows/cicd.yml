@@ -66,7 +66,7 @@ jobs:
     - name: Unit Test Case
       run: mvn test
 
-  maven-build:
+  build-and-push-docker-image:
     #runs-on: self-hosted
     runs-on: ubuntu-latest
     needs: unit-tests
@@ -81,24 +81,25 @@ jobs:
         cache: maven
     - name: Build Project
       run: mvn package
-
-    - name: Build docker and push
-      uses: actions/checkout@v4
+      
     - name: Login to Docker Hub
       uses: docker/login-action@v3
       with:
         username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
+        
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
+      
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
+      
     - name: Build and push
       uses: docker/build-push-action@v6
       with:
-        context: .
         push: true
         tags: okxabisohila/demo-app:latest
+        file: ./Dockerfile
 
 
 
